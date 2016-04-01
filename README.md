@@ -28,3 +28,27 @@ The implemented process has the following characteristics:
 * The pheromone update happens at two levels in the proposed algorithm: The local pheromone update is triggered after an Ant has finished constructing its solution and the global pheromone update starts when the whole colony have completed their solutions.
 * The global and local pheromone updates depend on different evaporation ratios. Check this values on the `AcsTspProblemConfiguration` class.
 * Being an Ant Colony System algorithm, the policy for incorporing components to a solution is the Pseudo-Random Proportional Selection Rule.
+
+The results 
+-----------
+For the berlin52 problem instance, the optional solution has a total distance of 7542 units. Under the current configuration, the solutions produced by the algorithm are around 7941 after an execution time of 1.5 seconds.
+
+How to use this code
+--------------------
+The code uploaded to this GitHub Repository corresponds to a Maven Java Project. You should be able to import it as an existing project to your current workspace.
+
+**This project depends on the Isula Framework**.  You need to download first the Isula Framework Project available on this Github Repository: https://github.com/cptanalatriste/isula
+
+This project also depends on some components on our Ant System implementation. The `aco-tsp` project that contains them is available on this Github Repository: https://github.com/cptanalatriste/aco-tsp
+
+Keep in mind that several file and folder locations were configured on the `AcoAcsTspWithIsula.java` file. You need to set values according to your environment in order to avoid a `FileNotFoundException`. 
+
+More about Isula
+----------------
+Visit the Isula Framework site: http://cptanalatriste.github.io/isula/
+
+Review the Isula JavaDoc: http://cptanalatriste.github.io/isula/doc/
+
+Questions, issues or support?
+----------------------------
+Feel free to contact me at carlos.gavidia@pucp.edu.pe.
