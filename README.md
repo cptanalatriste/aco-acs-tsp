@@ -39,7 +39,7 @@ The code uploaded to this GitHub Repository corresponds to a Maven Java Project.
 
 **This project depends on the Isula Framework**.  You need to download first the Isula Framework Project available on this Github Repository: https://github.com/cptanalatriste/isula
 
-This project also depends on some components on our Ant System implementation. The `aco-tsp` project that contains them is available on this Github Repository: https://github.com/cptanalatriste/aco-tsp
+This project also depends on some components of our Ant System implementation. The `aco-tsp` project that contains them is available on this Github Repository: https://github.com/cptanalatriste/aco-tsp
 
 Keep in mind that several file and folder locations were configured on the `AcoAcsTspWithIsula.java` file. You need to set values according to your environment in order to avoid a `FileNotFoundException`. 
 
