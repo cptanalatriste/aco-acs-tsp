@@ -23,3 +23,8 @@ This program uses the Ant Colony System algorithm for solving the Travelling Sal
         solver.getAntColony().addAntPolicies(new PseudoRandomNodeSelection<Integer, TspEnvironment>());
         solver.solveProblem();
 ```
+The implemented process has the following characteristics:
+* The initial pheromone value is a function of the number of cities and the cost of a randomly-generated solution. That procedure is implemented in the `AcsTspProblemConfiguration` class.
+* The pheromone update happens at two levels in the proposed algorithm: The local pheromone update is triggered after an Ant has finished constructing its solution and the global pheromone update starts when the whole colony have completed their solutions.
+* The global and local pheromone updates depend on different evaporation ratios. Check this values on the `AcsTspProblemConfiguration` class.
+* Being an Ant Colony System algorithm, the policy for incorporing components to a solution is the Pseudo-Random Proportional Selection Rule.
