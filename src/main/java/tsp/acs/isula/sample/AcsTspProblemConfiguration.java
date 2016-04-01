@@ -1,7 +1,7 @@
 package tsp.acs.isula.sample;
 
 import isula.aco.algorithms.acs.AcsConfigurationProvider;
-import tsp.isula.sample.AntForTsp;
+import isula.aco.tsp.AntForTsp;
 
 import java.util.ArrayList;
 import java.util.Collections;

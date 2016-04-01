@@ -7,7 +7,7 @@ import isula.aco.algorithms.antsystem.OnlinePheromoneUpdate;
 import isula.aco.algorithms.antsystem.StartPheromoneMatrix;
 import isula.aco.exception.InvalidInputException;
 import tsp.isula.sample.AcoTspWithIsula;
-import tsp.isula.sample.TspEnvironment;
+import isula.aco.tsp.TspEnvironment;
 
 import javax.naming.ConfigurationException;
 import java.io.IOException;
