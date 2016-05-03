@@ -39,7 +39,7 @@ The code uploaded to this GitHub Repository corresponds to a Maven Java Project.
 
 **This project depends on the Isula Framework**.  You need to download and install the Isula Framework Project on your local Maven repository. Follow the instructions available in https://github.com/cptanalatriste/isula
 
-This project also depends on some components of our Ant System implementation. The `aco-tsp` project that contains them is available on this Github Repository: https://github.com/cptanalatriste/aco-tsp
+This project also depends on some components of our Ant System implementation. The `aco-tsp` project that contains them is available on this Github Repository: https://github.com/cptanalatriste/aco-tsp . Before executing this project, you need to download `aco-tsp` and add it to your Maven repository thorough `mvn install`.
 
 Keep in mind that several file and folder locations were configured on the `AcoAcsTspWithIsula.java` file. You need to set values according to your environment in order to avoid a `FileNotFoundException`. Once this is ready, you can launch this project by executing `mvn exec:java -Dexec.mainClass="tsp.acs.isula.sample.AcoAcsTspWithIsula"` from the project root folder.
 
