@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>isula</groupId>
-    <packaging>pom</packaging>
+    <artifactId>aco-acs-tsp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
@@ -19,7 +19,6 @@
             </plugin>
         </plugins>
     </build>
-    <artifactId>aco-acs-tsp</artifactId>
     <dependencies>
         <dependency>
             <groupId>isula</groupId>
@@ -32,6 +31,5 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 
 </project>

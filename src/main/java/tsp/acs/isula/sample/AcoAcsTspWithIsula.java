@@ -4,6 +4,7 @@ import isula.aco.*;
 import isula.aco.algorithms.acs.PseudoRandomNodeSelection;
 import isula.aco.algorithms.antsystem.OfflinePheromoneUpdate;
 import isula.aco.algorithms.antsystem.OnlinePheromoneUpdate;
+import isula.aco.algorithms.antsystem.PerformEvaporation;
 import isula.aco.algorithms.antsystem.StartPheromoneMatrix;
 import isula.aco.exception.InvalidInputException;
 import tsp.isula.sample.AcoTspWithIsula;
@@ -24,7 +25,7 @@ public class AcoAcsTspWithIsula {
     public static void main(String... args) throws IOException, InvalidInputException, ConfigurationException {
         logger.info("ANT COLONY SYSTEM FOR THE TRAVELING SALESMAN PROBLEM");
 
-        String fileName = "C:\\Users\\Carlos G. Gavidia\\git\\aco-tsp\\src\\main\\resources\\berlin52.tsp";
+        String fileName = "berlin52.tsp";
         logger.info("fileName : " + fileName);
 
         double[][] problemRepresentation = AcoTspWithIsula.getRepresentationFromFile(fileName);
@@ -36,6 +37,8 @@ public class AcoAcsTspWithIsula {
         AcoProblemSolver<Integer, TspEnvironment> solver = new AcoProblemSolver<>();
         solver.initialize(environment, colony, configurationProvider);
         solver.addDaemonActions(new StartPheromoneMatrix<Integer, TspEnvironment>());
+        solver.addDaemonActions(new PerformEvaporation<Integer, TspEnvironment>());
+
         solver.addDaemonActions(getGlobalPheromoneUpdatePolicy());
 
         solver.getAntColony().addAntPolicies(getLocalPheromoneUpdatePolicy());
@@ -75,15 +78,14 @@ public class AcoAcsTspWithIsula {
     private static DaemonAction<Integer, TspEnvironment> getGlobalPheromoneUpdatePolicy() {
         return new OfflinePheromoneUpdate<Integer, TspEnvironment>() {
             @Override
-            protected double getNewPheromoneValue(Ant<Integer, TspEnvironment> ant, Integer positionInSolution,
+            protected double getPheromoneDeposit(Ant<Integer, TspEnvironment> ant, Integer positionInSolution,
                                                   Integer solutionComponent,
                                                   TspEnvironment environment,
                                                   ConfigurationProvider configurationProvider) {
-                Double afterEvaporation = ant.getPheromoneTrailValue(solutionComponent, positionInSolution, environment) *
-                        configurationProvider.getEvaporationRatio();
+
                 Double pheromoneDecay = 1 - configurationProvider.getEvaporationRatio();
                 Double contribution = pheromoneDecay / ant.getSolutionCost(environment);
-                return afterEvaporation + contribution;
+                return contribution;
             }
         };
     }
