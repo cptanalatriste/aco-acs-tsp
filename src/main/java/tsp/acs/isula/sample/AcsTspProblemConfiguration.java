@@ -31,8 +31,7 @@ public class AcsTspProblemConfiguration implements AcsConfigurationProvider {
 
         Collections.shuffle(randomSolution);
 
-        double randomQuality = AntForTsp.getTotalDistance(
-                randomSolution.toArray(new Integer[randomSolution.size()]),
+        double randomQuality = AntForTsp.getTotalDistance(randomSolution,
                 problemRepresentation);
 
         this.initialPheromoneValue = 1.0 / (numberOfCities * randomQuality);
@@ -49,11 +48,16 @@ public class AcsTspProblemConfiguration implements AcsConfigurationProvider {
 
     @Override
     public int getNumberOfAnts() {
-        return 10;
+        return 30;
     }
 
     @Override
     public double getEvaporationRatio() {
+        return 1 - 0.1;
+    }
+
+    @Override
+    public double getPheromoneDecayCoefficient() {
         return 1 - 0.1;
     }
 
@@ -81,5 +85,6 @@ public class AcsTspProblemConfiguration implements AcsConfigurationProvider {
     public double getBestChoiceProbability() {
         return 0.9;
     }
+
 
 }
