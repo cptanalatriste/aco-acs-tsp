@@ -2,6 +2,7 @@ package tsp.acs.isula.sample;
 
 import isula.aco.algorithms.acs.AcsConfigurationProvider;
 import isula.aco.tsp.AntForTsp;
+import isula.aco.tsp.TspEnvironment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,17 +14,17 @@ import java.util.List;
  */
 public class AcsTspProblemConfiguration implements AcsConfigurationProvider {
 
-    private double initialPheromoneValue;
+    private final double initialPheromoneValue;
 
     /**
      * In the algorithm described in the book, the initial pheromone value was a function of the quality of a
      * random solution. That logic is included in this constructor.
      *
-     * @param problemRepresentation TSP coordinate information.
+     * @param environment TSP environment with coordinate information.
      */
-    public AcsTspProblemConfiguration(double[][] problemRepresentation) {
+    public AcsTspProblemConfiguration(TspEnvironment environment) {
         List<Integer> randomSolution = new ArrayList<>();
-        int numberOfCities = problemRepresentation.length;
+        int numberOfCities = environment.getProblemRepresentation().length;
 
         for (int cityIndex = 0; cityIndex < numberOfCities; cityIndex += 1) {
             randomSolution.add(cityIndex);
@@ -31,9 +32,7 @@ public class AcsTspProblemConfiguration implements AcsConfigurationProvider {
 
         Collections.shuffle(randomSolution);
 
-        double randomQuality = AntForTsp.getTotalDistance(randomSolution,
-                problemRepresentation);
-
+        double randomQuality = AntForTsp.getTotalDistance(randomSolution, environment);
         this.initialPheromoneValue = 1.0 / (numberOfCities * randomQuality);
     }
 
